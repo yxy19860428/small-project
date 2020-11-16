@@ -28,18 +28,15 @@
   </view>
   <!--content-->
   <view class="content">
-    <view class="header">
-      推荐歌曲
-    </view>
-    <view class="content-nav">
-      <text>为你精心推荐</text>
-      <text class="more">查看更多</text>
-    </view>
+    <NavCom title="推荐歌曲" content="为你精心推荐"></NavCom>
     <scroll-view scroll-x enable-flex class="pic-content">
       <view class="pic-item" wx:for="{{applay}}" wx:key="id">
         <image src="{{item.img}}"></image>
         <text>{{item.name}}</text>
       </view>
     </scroll-view>
+  </view>
+  <view class="songRang">
+    <NavCom title="排行榜" content="热歌风向标准"></NavCom>
   </view>
 </view>

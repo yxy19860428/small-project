@@ -1,0 +1,27 @@
+
+<view class="person-page">
+  <image class="bg" src="/style/static/person/bgImg2.jpg"></image>
+  <view class="avator">
+    <image src="/style/static/person/missing-face.png"></image>
+    <text>登录</text>
+  </view>
+  <view class="vip-box">
+    <view class="content">
+      <image class="image" src="/style/static/person/vip-card-bg.png"></image>
+      <view class="header">
+        <view class="left">
+          <text class="iconfont vip"></text>
+          <text>会员</text>
+        </view>
+        <view class="right">立即开通</view>
+      </view>
+      <view class="content-body"></view>
+    </view>
+  </view>
+  <view class="list">
+    <image src="/style/static/person/a.png" ></image>
+    <view class="list-content">
+      
+    </view>
+  </view>
+</view>

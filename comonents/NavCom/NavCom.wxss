@@ -1,0 +1,20 @@
+.title{
+  color:#515a6e;
+  font-size: 30rpx;
+}
+.navContent{
+  height: 40rpx;
+  margin: 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:28rpx;
+}
+.navContent text{
+  color:#17233d;
+}
+.navContent .more{
+  border: 1rpx solid #dcdee2;
+  border-radius: 40rpx;
+  padding: 0 16rpx;
+}

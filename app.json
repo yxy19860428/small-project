@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/person/person",
+    "pages/login/login",
     "pages/index/index",
-    "pages/vido/vido",
-    "pages/login/login"
+    "pages/vido/vido"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#d43c33",

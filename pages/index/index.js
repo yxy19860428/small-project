@@ -15,20 +15,29 @@ Page({
    */
   onLoad: function (options) {
     this.getImg("/banner");
-    this.getApplay('/hostApplay')
+    this.getApplay('/personalized')
   },
   async getImg(url) {
     const res = await requestMethod(url);
     console.log(res);
     if (res.code === 200) {
-      this.setData({ lunbo: res.list });
+      const data = res.banners.map(item=>({
+        id:item.encodeId,
+        img:item.imageUrl
+      }))
+       this.setData({ lunbo: data });
     }
   },
   async getApplay(url){
     const res = await requestMethod(url)
+    console.log(res)
     if (res.code === 200) {
-      this.setData({ applay: res.data });
-      console.log(this.data.applay)
+      const data = res.result.map(item=>({
+        id:item.id,
+        name:item.name,
+        img:item.picUrl
+      }))
+      this.setData({ applay: data});
     }
   },
   /**

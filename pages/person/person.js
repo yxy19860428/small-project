@@ -1,18 +1,80 @@
-// pages/person/person.js
+let startY = 0
+let moveY = 0
+let disY = 0
+import requestMethod from '../../api/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    moveDis:"translateY(0);",
+    moveTime:'',
+    username:'',
+    historyPlay:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad:async function (options) {
+    const username = await wx.getStorage({
+      key: 'userMess',
+    })
+    this.setData({
+      username:username.data
+    })
+    this.getHistoryPlay(`/user/record?uid=${this.data.username.id}&type=1`)
+  },
 
+  async getHistoryPlay(url) {
+    const res = await requestMethod(url)
+    if(res.code === 200){
+      const data = res.weekData.map(item=>({
+        id:item.song.al.id,
+        imgUrl:item.song.al.picUrl,
+        name:item.song.al.name
+      }))
+      this.setData({
+        historyPlay:data
+      })
+    }
+  },
+
+  toLogin(){
+    if(this.data.username){
+      return;
+    }else{
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
+    
+  },
+  touchStart(event){
+    this.setData({
+      moveTime:''
+    })
+    startY = event.touches[0].clientY
+  },
+  touchMove(event){
+   moveY = event.touches[0].clientY
+   disY = moveY - startY
+  if(disY <=0){
+   return;
+  }
+  if(disY >=80){
+    disY=80
+  }
+   this.setData({
+     moveDis:`translateY(${disY}rpx)`
+   })
+  },
+  touchEnd(){
+    this.setData({
+      moveDis:`translateY(0)`,
+      moveTime:"all .3s linear"
+    })
   },
 
   /**

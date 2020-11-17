@@ -1,9 +1,11 @@
 
 <view class="person-page">
   <image class="bg" src="/style/static/person/bgImg2.jpg"></image>
-  <view class="avator">
-    <image src="/style/static/person/missing-face.png"></image>
-    <text>登录</text>
+  <view class="avator" bindtap="toLogin">
+    <image wx:if="{{!username}}" src="/style/static/person/missing-face.png"></image>
+    <image wx:else src="{{username.avatar}}"></image>
+    <text wx:if="{{!username}}">登录</text>
+    <text wx:eles>{{username.username}}</text>
   </view>
   <view class="vip-box">
     <view class="content">
@@ -18,10 +20,56 @@
       <view class="content-body"></view>
     </view>
   </view>
-  <view class="list">
+  <view class="list" 
+    bindtouchstart="touchStart"
+    bindtouchmove="touchMove"
+    bindtouchend="touchEnd"
+    style="transform: {{moveDis}};transition: {{moveTime}}"
+  >
     <image src="/style/static/person/a.png" ></image>
     <view class="list-content">
-      
+      <view class="list-header">
+        <view>
+          <text class="iconfont email"></text>
+          <text>我的消息</text>
+        </view>
+        <view>
+          <text class="iconfont haoyou"></text>
+          <text >我的好友</text>
+        </view>
+        <view>
+          <text class="iconfont geren"></text>
+          <text >个人主页</text>
+        </view>
+        <view>
+          <text class="iconfont pifu"></text>
+          <text >个性装扮</text>
+        </view>
+      </view>
+      <view class="list-body">
+       <view class="list-body-1">
+         <view>最近播放</view>
+         <scroll-view wx:if="{{!historyPlay}}" class="lunbotu" scroll-x enable-flex>
+            <view wx:for="{{historyPlay}}" wx:key="id" class="lunbotu-view">
+              <image src="{{item.imgUrl}}"></image>
+            </view>
+         </scroll-view>
+         <text wx:else>没有最近播放</text>
+       </view>
+       <view class="list-body-2">
+         <text>我的音乐</text>
+         <text class="iconfont arrow-r"></text>
+       </view>
+       <view class="list-body-3">
+        <text>我的收藏</text>
+         <text class="iconfont arrow-r"></text>
+       </view>
+       <view class="list-body-4">
+        <text>我的电台</text>
+         <text class="iconfont arrow-r"></text>
+       </view>
+      </view>
     </view>
+
   </view>
 </view>

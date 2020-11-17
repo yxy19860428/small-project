@@ -1,17 +1,67 @@
-// pages/login/login.js
+import requestMethod from '../../api/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    phone: '',
+    ps: ''
   },
 
+  async login() {
+    const {
+      ps,
+      phone
+    } = this.data
+    if (!phone) {
+      wx.showToast({
+        title: '手机号不能空',
+        icon: 'none'
+      })
+    } else if (!ps) {
+      wx.showToast({
+        title: '密码不能空',
+        icon: 'none'
+      })
+    } else {
+      const res = await requestMethod(`/login/cellphone?phone=${phone}&password=${ps}`)
+      console.log(res)
+      if (res.code === 200) {
+        const data = {
+          id: res.profile.userId,
+          username: res.profile.nickname,
+          avatar: res.profile.avatarUrl
+        }
+        wx.showToast({
+          title: 'title',
+          icon: 'success'
+        })
+        wx.setStorage({
+          data,
+          key: 'userMess',
+        })
+        wx.reLaunch({
+          url: '/pages/person/person',
+        })
+      }
+    }
+  },
+  input(event) {
+    //得到当前的type
+    let type = event.currentTarget.dataset.type
+    this.setData({
+      //更新当前type 
+      [type]: event.detail.value
+    })
+  },
+
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
 
   },
 

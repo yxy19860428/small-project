@@ -1,2 +1,19 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="login">
+  <view class="logo">LOGIN</view>
+  <view class="wecolme">欢迎回来!</view>
+  <view class="form">
+    <view class="phone">
+      <text>手机号码:</text>
+      <input data-type="phone" placeholder="请输入手机号" bindinput="input"/>
+    </view>
+    <view class="ps">
+      <text>密码:</text>
+      <input placeholder="请输入密码" data-type="ps" password bindinput="input"/>
+    </view>
+    <button class="button" bindtap="login">登 录</button>
+    <view class="forgetPs">忘记密码</view>
+  </view>
+  <view class="reg">
+    还没有账号？<text>立即注册</text>
+  </view>
+</view>

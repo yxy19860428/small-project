@@ -1,1 +1,60 @@
-/* pages/login/login.wxss */
+.login{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.logo{
+  position: absolute;
+  top: 0;
+  left:-16rpx;
+  color: #f8f8f8;
+  font-size: 120rpx;
+}
+.wecolme{
+  position: absolute;
+  top: 40rpx;
+  left:50rpx;
+  color: #17233d;
+  font-size: 50rpx;
+}
+.form{
+  position: absolute;
+  top: 200rpx;
+  left:50%;
+  width: 90%;
+  transform: translateX(-50%);
+}
+.form .phone,.ps{
+  margin: 20rpx 0;
+  background: #f8f8f8;
+  box-sizing: border-box;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+.form view input{
+  margin: 10rpx 0;
+}
+.button{
+  border: none;
+  height: 76rpx;
+  line-height: 76rpx;
+  border-radius: 76rpx;
+  background: #d43c33;
+  color: white;
+  margin-top: 70rpx;
+}
+.forgetPs{
+  color:#409EFF;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.reg{
+  position: absolute;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32rpx;
+}
+.reg text{
+  color: #409EFF;
+}

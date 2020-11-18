@@ -1,66 +1,54 @@
-// pages/vido/vido.js
+import requestMethod from '../../api/request'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    nav: [],
+    id:"",
+    videoList:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.getNav(`/video/group/list`)
+  },
+  async getNav(url) {
+    const res = await requestMethod(url)
+    if (res.code === 200) {
+      const id = res.data[0].id
+      const nav = res.data.slice(0, 20).map(item => ({
+        id: item.id,
+        name: item.name
+      }))
+      this.setData({
+        nav,
+        id
+      })
+      this.getVideoList(id)
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+ async getVideoList(id){
+     const res =  await requestMethod(`/video/group?id=${id}`)
+     if(res.code === 301){
+       wx.showToast({
+         title: 'msg',
+       })
+     }else if(res.code === 200 ){
+       console.log(res)
+        const list = res.datas.map(item=>({
+          url:item.data.previewUrl
+        }))
+        this.setData({
+          videoList:list
+        })
+        console.log(this.data.videoList)
+     }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getIndex(event){
+    const id = event.currentTarget.id
+    this.setData({
+      id:id>>> 0
+    })
+    this.getVideoList(id)
   }
+
 })

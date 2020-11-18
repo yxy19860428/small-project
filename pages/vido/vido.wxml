@@ -1,2 +1,22 @@
-<!--pages/vido/vido.wxml-->
-<text>pages/vido/vido.wxml</text>
+<view class="video-page">
+  <view class="video-header">
+    <image src="/style/static/video/video.jpg"></image>
+    <view>搜索歌曲</view>
+    <image src="/style/static/video/logo.png"></image>
+  </view>
+  <view class="nav-wrapper">
+    <scroll-view class="video-nav" scroll-x enable-flex>
+      <view class="{{id === item.id ? 'active':''}}" wx:for="{{nav}}" wx:key="id" bindtap="getIndex" id="{{item.id}}">
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="wrapper">
+    <scroll-view class="vido-body" scroll-y> 
+      <view wx:for="{{videoList}}" wx:key='*this'>
+        <video src="{{item.url}}"></video>
+        <view>ddddddddd</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

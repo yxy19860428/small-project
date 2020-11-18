@@ -8,72 +8,93 @@ Page({
    * 页面的初始数据
    */
   data: {
-    moveDis:"translateY(0);",
-    moveTime:'',
-    username:'',
-    historyPlay:[]
+    moveDis: "translateY(0);",
+    moveTime: '',
+    username: '',
+    historyPlay: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad:async function (options) {
-    const username = await wx.getStorage({
-      key: 'userMess',
-    })
-    this.setData({
-      username:username.data
-    })
-    this.getHistoryPlay(`/user/record?uid=${this.data.username.id}&type=1`)
+  onLoad: function (options) {
+    //同步
+    try {
+      const username = wx.getStorageSync('userMess')
+      this.setData({
+        username
+      })
+      if (!username) {
+        return
+      } else {
+        this.getHistoryPlay(`/user/record?uid=${this.data.username.id}&type=1`)
+      }
+    } catch (error) {
+      return;
+    }
+
+    //异步
+    // const _this = this
+    // wx.getStorage({
+    //   key: 'userMess',
+    //   success(res) {
+    //     _this.setData({
+    //       username: res.data
+    //     })
+    //     _this.getHistoryPlay(`/user/record?uid=${_this.data.username.id}&type=1`)
+    //   }
+    // })
+
   },
 
   async getHistoryPlay(url) {
     const res = await requestMethod(url)
-    if(res.code === 200){
-      const data = res.weekData.map(item=>({
-        id:item.song.al.id,
-        imgUrl:item.song.al.picUrl,
-        name:item.song.al.name
+    if (res.code === 200) {
+      const data = res.weekData.map(item => ({
+        id: item.song.al.id,
+        imgUrl: item.song.al.picUrl,
+        name: item.song.al.name
       }))
+      console.log(res)
       this.setData({
-        historyPlay:data
+        historyPlay: data
       })
     }
   },
 
-  toLogin(){
-    if(this.data.username){
+  toLogin() {
+    if (this.data.username) {
       return;
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/login/login',
       })
     }
-    
+
   },
-  touchStart(event){
+  touchStart(event) {
     this.setData({
-      moveTime:''
+      moveTime: ''
     })
     startY = event.touches[0].clientY
   },
-  touchMove(event){
-   moveY = event.touches[0].clientY
-   disY = moveY - startY
-  if(disY <=0){
-   return;
-  }
-  if(disY >=80){
-    disY=80
-  }
-   this.setData({
-     moveDis:`translateY(${disY}rpx)`
-   })
-  },
-  touchEnd(){
+  touchMove(event) {
+    moveY = event.touches[0].clientY
+    disY = moveY - startY
+    if (disY <= 0) {
+      return;
+    }
+    if (disY >= 80) {
+      disY = 80
+    }
     this.setData({
-      moveDis:`translateY(0)`,
-      moveTime:"all .3s linear"
+      moveDis: `translateY(${disY}rpx)`
+    })
+  },
+  touchEnd() {
+    this.setData({
+      moveDis: `translateY(0)`,
+      moveTime: "all .3s linear"
     })
   },
 

@@ -1,1 +1,51 @@
-/* pages/vido/vido.wxss */
+.video-page{
+  width: 100%;
+  height: 100%;
+}
+.video-page .video-header{
+  display: flex;
+  padding: 20rpx;
+}
+.video-page .video-header view{
+  flex: 1;
+  height: 60rpx;
+  line-height: 60rpx;
+  border:1rpx solid #dcdee2;
+  text-align: center;
+  border-radius: 10rpx;
+  margin: 0 10rpx;
+}
+.video-page .video-header image{
+  width: 60rpx;
+  height: 60rpx;
+
+}
+.video-nav{
+  display: flex;
+  height: 60rpx;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+.video-nav view{
+  text-align: center;
+  padding: 0 10rpx;
+}
+.video-nav view text{
+  white-space: nowrap;
+}
+.active{
+  border-bottom: 2rpx solid #d43c33;
+}
+.wrapper{
+  height: 85%;
+  overflow: auto;
+  margin-top: 20rpx;
+}
+.vido-body view{
+  width: 95%;
+  margin: 0 auto;
+}
+.vido-body video{
+  width: 100%;
+  border-radius: 10rpx;
+}

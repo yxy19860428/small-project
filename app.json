@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/vido/vido",
     "pages/person/person",
     "pages/login/login",
-    "pages/index/index",
-    "pages/vido/vido"
+    "pages/index/index"
     
   ],
   "window": {

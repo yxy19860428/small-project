@@ -31,7 +31,8 @@ Page({
         const data = {
           id: res.profile.userId,
           username: res.profile.nickname,
-          avatar: res.profile.avatarUrl
+          avatar: res.profile.avatarUrl,
+          cookie:res.cookie
         }
         wx.showToast({
           title: 'title',

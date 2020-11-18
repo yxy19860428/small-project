@@ -1,14 +1,27 @@
-import {config} from './config'
-const requestMethod = (url,data = {},method='get')=>{
-  return new Promise((resolve,reject)=>{
+import { cookie } from 'request'
+import {
+  config
+} from './config'
+const requestMethod = (url, data = {}, method = 'get') => {
+  let cookie
+  try {
+    let userMess = wx.getStorageSync('userMess').cookie+";"
+    cookie = userMess.split(";;").find(item=> item.indexOf("MUSIC_U") !== -1)
+  } catch (error) {
+    return;
+  }
+  return new Promise((resolve, reject) => {
     wx.request({
-      url:`${config.host}${url}`,
+      url: `${config.host}${url}`,
       data,
       method,
-      success(res){
+      header:{
+        cookie
+      },
+      success(res) {
         resolve(res.data)
       },
-      fail(error){
+      fail(error) {
         reject(error)
       }
     })

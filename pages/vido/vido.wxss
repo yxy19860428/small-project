@@ -25,6 +25,7 @@
   height: 60rpx;
   font-size: 32rpx;
   line-height: 60rpx;
+  margin-bottom: 20rpx;
 }
 .video-nav view{
   text-align: center;
@@ -36,16 +37,14 @@
 .active{
   border-bottom: 2rpx solid #d43c33;
 }
-.wrapper{
-  height: 85%;
-  overflow: auto;
-  margin-top: 20rpx;
+.vido-body{
+  height: calc(100vh - 184rpx);
+  width: 100%;
 }
-.vido-body view{
+.video-wapper{
   width: 95%;
   margin: 0 auto;
 }
-.vido-body video{
+.video-wapper video{
   width: 100%;
-  border-radius: 10rpx;
 }

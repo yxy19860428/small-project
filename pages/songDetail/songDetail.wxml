@@ -1,0 +1,15 @@
+<view class="song-detail">
+  <view class="header">
+    beyond
+  </view>
+  <view class="song-body">
+    <text class="circle"></text>
+    <image class="needle {{isPlay && 'needle-start'}}" src="/style/static/applySong/needle.png"></image>
+    <view class="discWraper {{isPlay && 'animial'}}">
+      <image class="disc" src="/style/static/applySong/disc.png"></image>
+      <image class="bg " src="/style/static/applySong/08.jpg"></image>
+    </view>
+   
+  </view>
+  <view class="song-footer"></view>
+</view>

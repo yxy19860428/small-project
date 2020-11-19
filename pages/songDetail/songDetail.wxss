@@ -1,0 +1,73 @@
+.song-detail{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.song-body text{
+  z-index: 100;
+  position: relative;
+  top: 10rpx;
+  left:-8rpx;
+  background: white;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.song-body .needle{
+  z-index: 99;
+  position: relative;
+  top: -20rpx;
+  left: 50rpx;
+  width: 200rpx;
+  height: 300rpx;
+  transform: rotate(-20deg);
+  transform-origin: 5rpx 0;
+  transition: all 1s linear;
+}
+.song-body .needle-start{
+  transform: rotate(0deg);
+}
+.song-body .discWraper {
+  width: 600rpx;
+  height: 600rpx;
+  position: relative;
+  top: -140rpx;
+}
+.song-body .discWraper .disc{
+  width: 100%;
+  height: 100%;
+}
+.song-body .discWraper .bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 370rpx;
+  height: 370rpx;
+  border-radius: 50%;
+}
+
+.animial{
+  animation: disAn 4s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes disAn{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+

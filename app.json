@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/songDetail/songDetail",
+    "pages/applySong/applySong",
+    "pages/index/index",
     "pages/vido/vido",
     "pages/person/person",
-    "pages/login/login",
-    "pages/index/index"
-    
+    "pages/login/login"  
   ],
   "window": {
     "navigationBarBackgroundColor": "#d43c33",
@@ -12,25 +13,25 @@
     "navigationBarTitleText": "云音乐"
   },
   "tabBar": {
-    "color":"#17233d",
+    "color": "#17233d",
     "selectedColor": "#d43c33",
-    "list":[
+    "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath":"/style/static/home.png",
+        "iconPath": "/style/static/home.png",
         "selectedIconPath": "/style/static/home-s.png"
       },
       {
         "pagePath": "pages/vido/vido",
         "text": "视频",
-        "iconPath":"/style/static/vido.png",
+        "iconPath": "/style/static/vido.png",
         "selectedIconPath": "/style/static/vido-s.png"
       },
       {
         "pagePath": "pages/person/person",
         "text": "我的",
-        "iconPath":"/style/static/my.png",
+        "iconPath": "/style/static/my.png",
         "selectedIconPath": "/style/static/my-s.png"
       }
     ]

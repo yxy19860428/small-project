@@ -1,0 +1,26 @@
+<view class="apply-page">
+  <view class="apply-header">
+    <image src="/style/static/applySong/recommendSong.jpg"></image>
+    <text>{{day}}/{{month}}</text>
+  </view>
+  <view class="apply-list">
+    <view class="list-header">
+      <text>播放全部</text>
+      <text>多选</text>
+    </view>
+    <scroll-view scroll-y class="list-body" enable-flex>
+      <view class="list-body-item" wx:for="{{songList}}" wx:key="id">
+        <view class="list-body-item-l">
+          <image class="list-body-item-image" src="{{item.imgUrl}}"></image>
+          <view class="list-body-item-content">
+            <view>{{item.songName}}</view>
+            <view>{{item.userName}}</view>
+          </view>
+        </view>
+        <view class="list-body-item-r">
+          <text class="iconfont more"></text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

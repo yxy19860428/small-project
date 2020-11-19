@@ -11,12 +11,11 @@
       </view>
     </scroll-view>
   </view>
-  <view class="wrapper">
-    <scroll-view class="vido-body" scroll-y> 
-      <view wx:for="{{videoList}}" wx:key='*this'>
-        <video src="{{item.url}}"></video>
-        <view>ddddddddd</view>
-      </view>
-    </scroll-view>
-  </view>
+  <scroll-view class="vido-body" scroll-y>
+    <view wx:for="{{videoList}}" wx:key='*this' class="video-wapper">
+      <video src="{{item.url}}"></video>
+      <view>ddddddddd</view>
+    </view>
+  </scroll-view>
+
 </view>

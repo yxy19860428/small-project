@@ -40,6 +40,12 @@ Page({
       this.setData({ applay: data});
     }
   },
+  
+  recommend(){
+    wx.reLaunch({
+      url: '/pages/applySong/applySong',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
